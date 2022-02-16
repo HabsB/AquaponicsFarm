@@ -1,0 +1,905 @@
+[
+    {
+        "id": "3538e6c49e323518",
+        "type": "tab",
+        "label": "Tank",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c4ad108b53675d05",
+        "type": "mqtt in",
+        "z": "3538e6c49e323518",
+        "name": "Temperature Subscriber",
+        "topic": "farm/tank/temperature",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "1d2f09948498f7c8",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "ddff173bbef9768f"
+            ]
+        ]
+    },
+    {
+        "id": "ddff173bbef9768f",
+        "type": "json",
+        "z": "3538e6c49e323518",
+        "name": "Parse string data to JSON Object",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 520,
+        "y": 180,
+        "wires": [
+            [
+                "03baa669515e3e0e"
+            ]
+        ]
+    },
+    {
+        "id": "03baa669515e3e0e",
+        "type": "switch",
+        "z": "3538e6c49e323518",
+        "name": "Separate component Id",
+        "property": "payload.componentId",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 670,
+        "y": 240,
+        "wires": [
+            [
+                "1b31750090d25ec4"
+            ],
+            [
+                "914d408a27437b07"
+            ],
+            [
+                "bc384cf7425832f3"
+            ]
+        ]
+    },
+    {
+        "id": "ca124f308927ba90",
+        "type": "mqtt in",
+        "z": "3538e6c49e323518",
+        "name": "Ph-value Subscriber",
+        "topic": "farm/tank/phValue",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "1d2f09948498f7c8",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 390,
+        "y": 400,
+        "wires": [
+            [
+                "9d4deb71419eca51"
+            ]
+        ]
+    },
+    {
+        "id": "9d4deb71419eca51",
+        "type": "json",
+        "z": "3538e6c49e323518",
+        "name": "Parse string data to JSON Object",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 580,
+        "y": 520,
+        "wires": [
+            [
+                "aa3a960e0de23f71"
+            ]
+        ]
+    },
+    {
+        "id": "aa3a960e0de23f71",
+        "type": "switch",
+        "z": "3538e6c49e323518",
+        "name": "Separate component Id",
+        "property": "payload.componentId",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 750,
+        "y": 420,
+        "wires": [
+            [
+                "9decfd32f5a4f727"
+            ],
+            [
+                "e05fa34071892bd5"
+            ],
+            [
+                "fc37f85453e581cd"
+            ]
+        ]
+    },
+    {
+        "id": "9decfd32f5a4f727",
+        "type": "ui_gauge",
+        "z": "3538e6c49e323518",
+        "name": "Ph-value",
+        "group": "80d17879907db660",
+        "order": 3,
+        "width": "6",
+        "height": 4,
+        "gtype": "gage",
+        "title": "Ph-Value",
+        "label": "",
+        "format": "{{msg.payload.value}}",
+        "min": "0",
+        "max": "14",
+        "colors": [
+            "#ca3838",
+            "#38ca38",
+            "#ca3838"
+        ],
+        "seg1": "6",
+        "seg2": "9",
+        "className": "",
+        "x": 1060,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "14b7b07740497d4d",
+        "type": "mqtt in",
+        "z": "3538e6c49e323518",
+        "name": "Oxygen Subscriber",
+        "topic": "farm/tank/dissolvedOxygen",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "1d2f09948498f7c8",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 430,
+        "y": 680,
+        "wires": [
+            [
+                "a5f298de26446cf5"
+            ]
+        ]
+    },
+    {
+        "id": "a5f298de26446cf5",
+        "type": "json",
+        "z": "3538e6c49e323518",
+        "name": "Parse string data to JSON Object",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 580,
+        "y": 760,
+        "wires": [
+            [
+                "15dbf12eaeec556d"
+            ]
+        ]
+    },
+    {
+        "id": "15dbf12eaeec556d",
+        "type": "switch",
+        "z": "3538e6c49e323518",
+        "name": "Separate component Id",
+        "property": "payload.componentId",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 750,
+        "y": 660,
+        "wires": [
+            [
+                "c920167c7b2a9ec8"
+            ],
+            [
+                "7c63dd73191bcd2d"
+            ],
+            [
+                "28b7e137abcdd623"
+            ]
+        ]
+    },
+    {
+        "id": "c920167c7b2a9ec8",
+        "type": "ui_gauge",
+        "z": "3538e6c49e323518",
+        "name": "Oxygen Level",
+        "group": "80d17879907db660",
+        "order": 4,
+        "width": "6",
+        "height": 4,
+        "gtype": "gage",
+        "title": "Dissolved Oxygen",
+        "label": "ppm",
+        "format": "{{msg.payload.value}}",
+        "min": "0",
+        "max": "10",
+        "colors": [
+            "#ca3838",
+            "#38ca38",
+            "#ca3838"
+        ],
+        "seg1": "5",
+        "seg2": "7",
+        "className": "",
+        "x": 1100,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "7c63dd73191bcd2d",
+        "type": "ui_gauge",
+        "z": "3538e6c49e323518",
+        "name": "Oxygen Level",
+        "group": "393ef64abaebed35",
+        "order": 5,
+        "width": 5,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Dissolved Oxygen",
+        "label": "ppm",
+        "format": "{{msg.payload.value}}",
+        "min": "0",
+        "max": "10",
+        "colors": [
+            "#ca3838",
+            "#38ca38",
+            "#ca3838"
+        ],
+        "seg1": "5",
+        "seg2": "7",
+        "className": "",
+        "x": 1100,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "28b7e137abcdd623",
+        "type": "ui_gauge",
+        "z": "3538e6c49e323518",
+        "name": "Oxygen Level",
+        "group": "c5b271ba373e81d6",
+        "order": 4,
+        "width": "6",
+        "height": 4,
+        "gtype": "gage",
+        "title": "Dissolved Oxygen",
+        "label": "ppm",
+        "format": "{{msg.payload.value}}",
+        "min": "0",
+        "max": "10",
+        "colors": [
+            "#ca3838",
+            "#38ca38",
+            "#ca3838"
+        ],
+        "seg1": "5",
+        "seg2": "7",
+        "className": "",
+        "x": 1100,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "e05fa34071892bd5",
+        "type": "ui_gauge",
+        "z": "3538e6c49e323518",
+        "name": "Ph-value",
+        "group": "393ef64abaebed35",
+        "order": 4,
+        "width": 5,
+        "height": 4,
+        "gtype": "gage",
+        "title": "Ph-Value",
+        "label": "",
+        "format": "{{msg.payload.value}}",
+        "min": "0",
+        "max": "14",
+        "colors": [
+            "#ca3838",
+            "#38ca38",
+            "#ca3838"
+        ],
+        "seg1": "6",
+        "seg2": "9",
+        "className": "",
+        "x": 1060,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "fc37f85453e581cd",
+        "type": "ui_gauge",
+        "z": "3538e6c49e323518",
+        "name": "Ph-value",
+        "group": "c5b271ba373e81d6",
+        "order": 3,
+        "width": "6",
+        "height": 4,
+        "gtype": "gage",
+        "title": "Ph-Value",
+        "label": "",
+        "format": "{{msg.payload.value}}",
+        "min": "0",
+        "max": "14",
+        "colors": [
+            "#ca3838",
+            "#38ca38",
+            "#ca3838"
+        ],
+        "seg1": "6",
+        "seg2": "9",
+        "className": "",
+        "x": 1060,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "74efbd7c06960528",
+        "type": "mqtt in",
+        "z": "3538e6c49e323518",
+        "name": "Water level Subscriber",
+        "topic": "farm/tank/waterLevel",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "1d2f09948498f7c8",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 440,
+        "y": 880,
+        "wires": [
+            [
+                "cc4f193a804ee424"
+            ]
+        ]
+    },
+    {
+        "id": "cc4f193a804ee424",
+        "type": "json",
+        "z": "3538e6c49e323518",
+        "name": "Parse string data to JSON Object",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 580,
+        "y": 960,
+        "wires": [
+            [
+                "334e1131fcd14d7a"
+            ]
+        ]
+    },
+    {
+        "id": "334e1131fcd14d7a",
+        "type": "switch",
+        "z": "3538e6c49e323518",
+        "name": "Separate component Id",
+        "property": "payload.componentId",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "1",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "2",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "3",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 750,
+        "y": 860,
+        "wires": [
+            [
+                "ebb92be60d00ce77"
+            ],
+            [
+                "4349cdcd4dd05a0c"
+            ],
+            [
+                "925fa17f182414a2"
+            ]
+        ]
+    },
+    {
+        "id": "ebb92be60d00ce77",
+        "type": "ui_gauge",
+        "z": "3538e6c49e323518",
+        "name": "Water Level",
+        "group": "80d17879907db660",
+        "order": 6,
+        "width": 10,
+        "height": 6,
+        "gtype": "wave",
+        "title": "Water Level",
+        "label": "litres",
+        "format": "{{msg.payload.value}}",
+        "min": "0",
+        "max": "1500",
+        "colors": [
+            "#ca3838",
+            "#38ca38",
+            "#ca3838"
+        ],
+        "seg1": "700",
+        "seg2": "1000",
+        "className": "liquidFillGaugeText",
+        "x": 1090,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "4349cdcd4dd05a0c",
+        "type": "ui_gauge",
+        "z": "3538e6c49e323518",
+        "name": "Water Level",
+        "group": "393ef64abaebed35",
+        "order": 7,
+        "width": 10,
+        "height": 6,
+        "gtype": "wave",
+        "title": "Water Level",
+        "label": "litres",
+        "format": "{{msg.payload.value}}",
+        "min": "0",
+        "max": "1500",
+        "colors": [
+            "#ca3838",
+            "#38ca38",
+            "#ca3838"
+        ],
+        "seg1": "700",
+        "seg2": "1000",
+        "className": "",
+        "x": 1090,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "925fa17f182414a2",
+        "type": "ui_gauge",
+        "z": "3538e6c49e323518",
+        "name": "Water Level",
+        "group": "c5b271ba373e81d6",
+        "order": 6,
+        "width": 10,
+        "height": 6,
+        "gtype": "wave",
+        "title": "Water Level",
+        "label": "litres",
+        "format": "{{msg.payload.value}}",
+        "min": "0",
+        "max": "1500",
+        "colors": [
+            "#ca3838",
+            "#38ca38",
+            "#ca3838"
+        ],
+        "seg1": "700",
+        "seg2": "1000",
+        "className": "",
+        "x": 1090,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "eb04c3be8847d286",
+        "type": "ui_chart",
+        "z": "3538e6c49e323518",
+        "name": "Temperature",
+        "group": "80d17879907db660",
+        "order": 1,
+        "width": "11",
+        "height": "6",
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm",
+        "interpolate": "monotone",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "40",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1170,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1b31750090d25ec4",
+        "type": "change",
+        "z": "3538e6c49e323518",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload.value",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 140,
+        "wires": [
+            [
+                "eb04c3be8847d286"
+            ]
+        ]
+    },
+    {
+        "id": "ff89490d50e61f5e",
+        "type": "ui_chart",
+        "z": "3538e6c49e323518",
+        "name": "Temperature",
+        "group": "393ef64abaebed35",
+        "order": 2,
+        "width": "11",
+        "height": "6",
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm",
+        "interpolate": "monotone",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "40",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1170,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "914d408a27437b07",
+        "type": "change",
+        "z": "3538e6c49e323518",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload.value",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 200,
+        "wires": [
+            [
+                "ff89490d50e61f5e"
+            ]
+        ]
+    },
+    {
+        "id": "b442389d6ea3a5a1",
+        "type": "ui_chart",
+        "z": "3538e6c49e323518",
+        "name": "Temperature",
+        "group": "c5b271ba373e81d6",
+        "order": 1,
+        "width": "11",
+        "height": "6",
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm",
+        "interpolate": "monotone",
+        "nodata": "",
+        "dot": true,
+        "ymin": "0",
+        "ymax": "40",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": true,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1170,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bc384cf7425832f3",
+        "type": "change",
+        "z": "3538e6c49e323518",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "msg.payload.value",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 260,
+        "wires": [
+            [
+                "b442389d6ea3a5a1"
+            ]
+        ]
+    },
+    {
+        "id": "c0acf2dc80f881e9",
+        "type": "ui_spacer",
+        "z": "3538e6c49e323518",
+        "name": "spacer",
+        "group": "80d17879907db660",
+        "order": 2,
+        "width": "10",
+        "height": "1"
+    },
+    {
+        "id": "981cce47c58fa896",
+        "type": "ui_spacer",
+        "z": "3538e6c49e323518",
+        "name": "spacer",
+        "group": "80d17879907db660",
+        "order": 5,
+        "width": 10,
+        "height": 1
+    },
+    {
+        "id": "2b2f54ed96e1a4b6",
+        "type": "ui_spacer",
+        "z": "3538e6c49e323518",
+        "name": "spacer",
+        "group": "393ef64abaebed35",
+        "order": 6,
+        "width": 10,
+        "height": 1
+    },
+    {
+        "id": "8b39db1776342478",
+        "type": "ui_spacer",
+        "z": "3538e6c49e323518",
+        "name": "spacer",
+        "group": "c5b271ba373e81d6",
+        "order": 2,
+        "width": 10,
+        "height": 1
+    },
+    {
+        "id": "0ca8aedb904f9fd1",
+        "type": "ui_spacer",
+        "z": "3538e6c49e323518",
+        "name": "spacer",
+        "group": "c5b271ba373e81d6",
+        "order": 5,
+        "width": 10,
+        "height": 1
+    },
+    {
+        "id": "5120c9258f334f49",
+        "type": "ui_spacer",
+        "z": "3538e6c49e323518",
+        "name": "spacer",
+        "group": "393ef64abaebed35",
+        "order": 3,
+        "width": "10",
+        "height": "1"
+    },
+    {
+        "id": "1d2f09948498f7c8",
+        "type": "mqtt-broker",
+        "name": "Test Docker MQTT",
+        "broker": "172.17.0.5",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "2",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "80d17879907db660",
+        "type": "ui_group",
+        "name": "Tank 1",
+        "tab": "4e69cc06f56c6a9d",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "393ef64abaebed35",
+        "type": "ui_group",
+        "name": "Tank 2",
+        "tab": "4e69cc06f56c6a9d",
+        "order": 2,
+        "disp": true,
+        "width": "11",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "c5b271ba373e81d6",
+        "type": "ui_group",
+        "name": "Tank 3",
+        "tab": "4e69cc06f56c6a9d",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": true,
+        "className": ""
+    },
+    {
+        "id": "4e69cc06f56c6a9d",
+        "type": "ui_tab",
+        "name": "Tank",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
